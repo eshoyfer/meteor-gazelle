@@ -5,18 +5,17 @@
 1. Motivation
 2. Business rules
 3. Use cases
-4. Data model
 
 ## Motivation
 
->The site contains a variety of users with a vast wealth of knowledge. The wiki is a place where users can put their knowledge to work, and write articles for users to use. These may be supplementary to other documents on the site, or standalone documents such as guides.
+The site contains a variety of users with a vast wealth of knowledge. The wiki is a place where users can put their knowledge to work, and write articles for users to use. These may be supplementary to other documents on the site, or standalone documents such as guides.
 
 ## Business rules
 
-> * Articles must be able to be read/write locked based on user class.
-> * Users with the wiki administration permission must have full access to all articles.
-> * Article creation must be associated with a permission.
-> * Duplicate aliases, tags, and dedicated terms must be unique and not empty.
+* Articles must be able to be read/write locked based on user class.
+* Users with the wiki administration permission must have full access to all articles.
+* Article creation must be associated with a permission.
+* Duplicate aliases, tags, and dedicated terms must be unique and not empty.
 
 ## Use cases
 
@@ -44,6 +43,10 @@
 
 * Each section must have a method to add another section.
 * Each section must have a method to add a sub-section.
+
+**Functional Requirements**
+
+* BBCode/Markdown that changes the font size must be removed from the article text upon submission.
 
 ### 2.0 Viewing an article
 
@@ -310,39 +313,3 @@
 **Applicable business rules:**
 
 * Dedicated terms must be unique across all articles.
-
-## Data model
-
-**Wiki Articles:**
-* The title of the article.
-* The ID of the user that created the article.
-* An array of unique dedicated terms.
-* The timestamp of the article creation time.
-* The timestamp of the last edit time.
-* A sections subdocument, containing:
-  * The title of the section.
-  * The body of the section.
-  * A sub-section document, containing:
-    * The title of the sub-section.
-    * The body of the sub-section.
-* A revisions subdocument, containing:
-  * The revision title.
-  * The revision body.
-  * The timestamp of the revision date.
-  * The ID of the user that authored the revision.
-* A tags subdocument, containing:
-  * The tag name.
-  * The ID of the user that added the tag.
-  * The timestamp of when the tag was added.
-* A comments subdocument, containing:
-  * The ID of the user that added the comment.
-  * The comment body.
-  * The ID of the user that last edited the comment.
-  * The timestamp of when the comment was created.
-  * The timestamp of when the comment was last edited.
-
-  **Wiki Aliases**
-  * The search term.
-  * The aliased term.
-  * The ID of the user that added the alias.
-  * The timestamp of when the alias was added.
